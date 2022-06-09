@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodaj użytkownika{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center m-5">Dodaj użytkownika</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Dodaj użytkownika:</h2>
+                {% if form is defined %}
+                {{ form_start(form) }}
+                {{ form_row(form.depot) }}
+                {{ form_row(form.user) }}
+                <small><a href="{{ path('registration') }}">Stwórz użytkownika</a></small>
+                {{ form_end(form) }}
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <h4>Użytkownicy przypisani do magazynu:</h4>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Login</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.user.username }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

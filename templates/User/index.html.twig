@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Użytkownicy{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="m-5 text-center">Użytkownicy</h1>
+    <a class="btn btn-primary m-1" href="{{ path('registration') }}" role="button">Stwórz użytkownika</a>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Login</th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                <th scope="row">{{ user.id }}</th>
+                <td>{{ user.username}}</td>
+                <td><a class="btn btn-primary" href="{{ path('user', {id: user.id}) }}" role="button">Profil</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

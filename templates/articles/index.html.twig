@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artykuły{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center m-5">Artykuły</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Dodaj nowy:</h4>
+                {% if form is defined %}
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.unit) }}
+                <small><a href="{{ path('units') }}">Dodaj jednostkę</a></small>
+                {{ form_end(form) }}
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Artykuł</th>
+                            <th scope="col">Jednostka</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.id }}</td>
+                            <td>{{ article.name }}</td>
+                            <td>{{ article.unit.name }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

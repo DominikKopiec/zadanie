@@ -1,3 +1,45 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+login:
+    path: /login
+    controller: App\Controller\LoginController::login
+logout:
+    path: /logout
+    controller: App\Controller\LoginController::logout
+index:
+    path: /
+    controller: App\Controller\LoginController::login
+articles:
+    path: /articles
+    controller: App\Controller\ArticlesController::index
+units:
+    path: /units
+    controller: App\Controller\UnitsController::index
+depots:
+    path: /depots
+    controller: App\Controller\DepotsController::show
+depot:
+    path: /depots/{id}
+    controller: App\Controller\DepotsController::showone
+newdepod:
+    path: /newdepot
+    controller: App\Controller\DepotsController::add
+addarticletodepot:
+    path: /depots/{id}/accept
+    controller: App\Controller\DepotsController::addarticle
+issuearticlefromdepot:
+    path: /depots/{id}/issueproduct
+    controller: App\Controller\DepotsController::issueproduct
+addusertodepot:
+    path: /depots/{id}/adduser
+    controller: App\Controller\DepotsController::adduser
+user:
+    path: /users/{id}
+    controller: App\Controller\UserController::showone
+users:
+    path: /users
+    controller: App\Controller\UserController::index
+newuser:
+    path: /newuser
+    controller: App\Controller\UserController::add
+adddepottouser:
+    path: /users/{id}/addDepot
+    controller: App\Controller\UserController::addDepot

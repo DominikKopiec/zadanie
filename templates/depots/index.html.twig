@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magazyny{% endblock %}
+
+
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center m-5">Magazyny</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a class="btn btn-primary m-1" href="{{ path('newdepod') }}" role="button">Stwórz magazyn</a>
+    {% endif %}
+    <div class="row d-flex justify-content-between">
+    {% if is_granted('ROLE_ADMIN') %}
+        {% for depot in depots %}
+            <div class="card col-md-3 m-1">
+                <div class="card-body float-left">
+                    <h5 class="card-title">{{ depot.name }}</h5>
+                    <a href="{{ path('depot', {id: depot.id}) }}" class="card-link">Zobacz</a>
+                </div>
+            </div>   
+        {% endfor %}
+    {% else %}
+        {% for depot in depots %}
+            <div class="card col-md-3 m-1">
+                <div class="card-body float-left">
+                    <h5 class="card-title">{{ depot.depot.name }}</h5>
+                    <a href="{{ path('depot', {id: depot.depot.id}) }}" class="card-link">Zobacz</a>
+                </div>
+            </div>   
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodaj magazyn{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-center m-5">Nowy magazyn</h2>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                {% if form is defined %}
+                {{ form(form) }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
